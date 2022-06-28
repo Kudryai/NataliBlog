@@ -5,7 +5,6 @@ from .forms import PostForm
 from app import db
 from flask import redirect
 from flask import url_for
-
 from flask_security import login_required
 
 posts = Blueprint('posts',__name__, template_folder = "templates")
@@ -62,6 +61,8 @@ def index():
     pages = posts.paginate(page=page, per_page = 5)
 
     return render_template('posts/index.html',posts=posts, pages=pages)
+
+
 
 
 @posts.route('/<slug>')
