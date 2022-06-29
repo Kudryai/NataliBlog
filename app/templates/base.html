@@ -1,89 +1,103 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:src" content="">
+    <meta property="og:image" content="">
+    <meta name="twitter:title" content="Home">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="static/image/logo5.png" type="image/x-icon">
+    <meta name="description" content="">
     <title>
         {% block title %}
 
         {% endblock %} | Школа английского Натальи Кудрявцевой
     </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/bootstrap/css/bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/bootstrap/css/bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/dropdown/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/socicon/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/theme/css/style.css') }}">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap">
+    </noscript>
+    <link rel="preload" as="style" href="{{ url_for('static', filename ='assets/mobirise/css/mbr-additional.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/mobirise/css/mbr-additional.css') }}" type="text/css">
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg bg-secondary bg-gradient">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{url_for('index')}}">USlang</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-ta3o743u5B" once="menu" id="menu3-m">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="{{url_for('index')}}">USlang</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url_for('posts.index')}}">Blog</a>
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="{{url_for('posts.index')}}">
+                            Блог</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black display-4" href="#">Contacts</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <!-- <a class="nav-link active" href = "{{ url_for ('posts.create_post')}}">Новый пост</a> -->
-                    <li>
-                        {% if current_user.has_role('admin') %}
-                        <a class="nav-link active" href ='/admin'>Admin</a>
-                        {% endif %}
-                    </li>    
-                    </li>
-                </ul>
-                <form class="d-flex" role="search" method = "GET">
+                    <form class="d-flex" role="search" method="GET">
 
-                    <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" name = "q" value ="{{ request.args.get('q','') }}">
+                        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" name="q"
+                            value="{{ request.args.get('q','') }}">
 
 
-                    <button class="btn btn-dark" type="submit">Поиск</button>
-                </form>
+                        <button class="btn btn-dark" type="submit">Поиск</button>
+                    </form>
+                    <li class="nav-item">
+                    {% if current_user.has_role('admin') %}
+                        <a class="nav-link link text-black display-4" href="/admin">
+                            ADMIN</a>
+                    {% endif %}
+                        </li></ul>
+                
             </div>
         </div>
     </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-        crossorigin="anonymous"></script>
-    <div class='container'>
-        <div class="row">
-            <h1>
-                {% block content_title %}
+</section>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+            crossorigin="anonymous"></script>
+        <div class='container'>
+            <div class="row">
+                <h1>
+                    {% block content_title %}
+
+                    {% endblock %}
+                </h1>
+                {% block content %}
 
                 {% endblock %}
-            </h1> 
-
-            {% block content %}
-
-            {% endblock %}
-
+            </div>
         </div>
-    </div>
-</body>
 
+        {% block content_index %}
+
+        {% endblock %}
+    </section><section><a href="https://mobiri.se"></a><a href="https://mobiri.se"></a></section><script src="static/js/bootstrap.bundle.min.js"></script>  <script src="static/js/smooth-scroll.js"></script>  <script src="static/js/index.js"></script>  <script src="static/js/navbar-dropdown.js"></script>  <script src="static/js/script.js"></script>
+</body>
 </html>
