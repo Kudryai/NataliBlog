@@ -274,7 +274,7 @@ iframe {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  word-break: break-word;
+  word-break: normal;
 }
 
 .btn-sm {
@@ -785,7 +785,7 @@ body {
   background-clip: border-box;
   color: #232323;
   line-height: 1rem !important;
-  height: auto;
+  height: max-content;
   padding: 0.6rem 1.2rem;
   transition: border-color 0.25s ease 0s;
   border: 1px solid transparent !important;
