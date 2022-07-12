@@ -17,6 +17,11 @@
         <br/><br/>{{ post.body |make_shorter(220)|safe }}
         <br/><br/>
 </div>
+<div class='tags'>
+        {% for tag in tags %}
+        <a href ="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge text-bg-success">{{ tag.name }}</span></a>
+        {% endfor %}
+</div>
 {% endfor %}
 <nav>
         <ul class="pagination">
