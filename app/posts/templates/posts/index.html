@@ -12,9 +12,16 @@
 
 
 {% for post in pages.items %}
-<p>
-        <a href="{{ url_for('posts.post_detail', slug = post.slug) }}">{{ post.title }}</a>
-</p>
+<div class = "shadow p-3 mb-5 bg-body rounded">
+        <h2><a href="{{ url_for('posts.post_detail', slug = post.slug) }}">{{ post.title }}</a></h2>
+        <br/><br/>{{ post.body |make_shorter(220)|safe }}
+        <br/><br/>
+</div>
+<div class='tags'>
+        {% for tag in tags %}
+        <a href ="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge text-bg-success">{{ tag.name }}</span></a>
+        {% endfor %}
+</div>
 {% endfor %}
 <nav>
         <ul class="pagination">

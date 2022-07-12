@@ -10,10 +10,11 @@ from flask_security import SQLAlchemyUserDatastore, Security
 from flask_security import current_user
 
 from flask import redirect, url_for, request
-
+from flask_ckeditor import CKEditor
 
 
 app = Flask(__name__)
+ckeditor = CKEditor(app)
 app.config.from_object(Configuration)
 
 db = SQLAlchemy(app)

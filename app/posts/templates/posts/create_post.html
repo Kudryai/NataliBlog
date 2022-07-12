@@ -11,6 +11,7 @@ New post
 {% endblock %}
 
 {% block content %}
+
 <div class='col-md-6'>
     <form action="{{ url_for('posts.create_post')}}" method="POST">
 
@@ -24,5 +25,7 @@ New post
         <button type="submit" class="btn btn-primary">Создать</button>
 
     </form>
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='body') }}
 </div>
 {% endblock %}
