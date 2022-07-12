@@ -11,18 +11,19 @@
 {% block content %}
 
 
+
 {% for post in pages.items %}
 <div class = "shadow p-3 mb-5 bg-body rounded">
-        <h2><a href="{{ url_for('posts.post_detail', slug = post.slug) }}">{{ post.title }}</a></h2>
+        <h2><a href="{{ url_for('posts.post_detail', slug =post.slug) }}">{{ post.title }}</a></h2>
+        {% for tag in post.tags %}
+<a href ="{{ url_for('posts.tag_detail', slug =tag.slug) }}"><span class="badge text-bg-success">{{ post.tags }}</span></a>
+        {% endfor %}
         <br/><br/>{{ post.body |make_shorter(220)|safe }}
         <br/><br/>
 </div>
-<div class='tags'>
-        {% for tag in tags %}
-        <a href ="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge text-bg-success">{{ tag.name }}</span></a>
-        {% endfor %}
-</div>
+
 {% endfor %}
+
 <nav>
         <ul class="pagination">
                 <li {% if not pages.has_prev %} class="disabled" {% endif %}>
