@@ -16,7 +16,7 @@
 <div class = "shadow p-3 mb-5 bg-body rounded">
         <h2><a href="{{ url_for('posts.post_detail', slug =post.slug) }}">{{ post.title }}</a></h2>
         {% for tag in post.tags %}
-<a href ="{{ url_for('posts.tag_detail', slug =tag.slug) }}"><span class="badge text-bg-success">{{ post.tags }}</span></a>
+<a href ="{{ url_for('posts.tag_detail', slug =tag.slug) }}"><span class="badge text-bg-success">{{ tag.slug }}</span></a>
         {% endfor %}
         <br/><br/>{{ post.body |make_shorter(220)|safe }}
         <br/><br/>
