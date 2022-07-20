@@ -1,3 +1,4 @@
+from time import process_time_ns
 from flask import Blueprint, render_template
 from models import Post, Tag
 from flask import request
@@ -47,7 +48,7 @@ def edit_post(slug):
 def index():
     q = request.args.get('q')
     page = request.args.get('page')
-
+    tags = Tag.query.all()
     if page and page.isdigit():
         page = int(page)
     else:
@@ -60,7 +61,7 @@ def index():
 
     pages = posts.paginate(page=page, per_page = 5)
 
-    return render_template('posts/index.html',posts=posts, pages=pages)
+    return render_template('posts/index.html',posts=posts, pages=pages, tags=tags)
 
 
 
