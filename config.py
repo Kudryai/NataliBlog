@@ -1,3 +1,6 @@
+from tkinter import S
+
+
 class Configuration(object):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
