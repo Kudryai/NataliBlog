@@ -1,1 +1,1 @@
-web: gunicorn nataliblog:app
+web: gunicorn app:app
