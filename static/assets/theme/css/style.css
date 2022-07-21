@@ -557,7 +557,7 @@ nav .mbr-section-btn {
     max-height: 93.5vh;
   }
   .menu .collapsed .navbar-collapse.show {
-    overflow: auto;
+    overflow-y: auto;
   }
 }
 @media (max-width: 767px) {
