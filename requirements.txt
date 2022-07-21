@@ -35,7 +35,6 @@ pipenv==2022.7.4
 pkg_resources==0.0.0
 platformdirs==2.5.2
 protobuf==4.21.1
-psycopg2==2.9.3
 psycopg2-binary==2.9.3
 pytz==2022.1
 requests==2.28.1
