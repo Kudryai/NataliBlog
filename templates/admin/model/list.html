@@ -144,8 +144,9 @@
                         {{ form[c](pk=get_pk_value(row), display_value=get_value(row, c)) }}
                         {% endif %}
                     {% else %}
-                    {{ get_value(row, c)|safe |make_shorter(220) }}
+                    {{ get_value(row, c) }} 
                     {% endif %}
+                    <!-- #|safe |make_shorter(220) -->
                     </td>
                 {% endfor %}
             {% endblock %}

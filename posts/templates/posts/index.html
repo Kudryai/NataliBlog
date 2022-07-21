@@ -18,8 +18,9 @@
         {% for tag in post.tags %}
 <a href ="{{ url_for('posts.tag_detail', slug =tag.slug) }}"><span class="badge text-bg-success">{{ tag.slug }}</span></a>
         {% endfor %}
-        <br/><br/>{{ post.body |make_shorter(220)|safe }}
+        <br/><br/>{{ post.body }} 
         <br/><br/>
+        <!-- #|safe |make_shorter(220) -->
 </div>
 
 {% endfor %}
