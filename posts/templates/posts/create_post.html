@@ -10,9 +10,9 @@ Create new post
 New post
 {% endblock %}
 
-{% block content %}
+{% block content_index %}
 
-<div class='col-md-6'>
+<div class = "shadow p-3 mb-5 bg-body rounded">
     <form action="{{ url_for('posts.create_post')}}" method="POST">
 
         {% for field in form %}
@@ -21,12 +21,10 @@ New post
             {{ field(class='form-control') }}
         </div>
         {% endfor %}
-
         <button type="submit" class="btn btn-primary">Создать</button>
-
     </form>
+</div>
     {{ ckeditor.load() }}
     {{ ckeditor.config(name='body') }}
     {{ ckeditor.config() }}
-</div>
 {% endblock %}
