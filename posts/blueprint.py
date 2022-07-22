@@ -8,6 +8,7 @@ from flask import redirect
 from flask import url_for
 from flask_security import login_required
 
+
 posts = Blueprint('posts',__name__, template_folder = "templates")
 
 @posts.route('/create',methods = ['POST','GET'])
