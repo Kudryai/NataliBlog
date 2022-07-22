@@ -13,15 +13,14 @@
 
 
 {% for post in pages.items %}
-<div class = "shadow p-3 mb-5 bg-body rounded">
+<div class = "shadow p-3 mb-5 bg-body rounded" style="
+max-height: 250;
+overflow: hidden;
+" >
         <h2><a href="{{ url_for('posts.post_detail', slug =post.slug) }}">{{ post.title }}</a></h2>
         {% for tag in post.tags %}
 <a href ="{{ url_for('posts.tag_detail', slug =tag.slug) }}"><span class="badge text-bg-success">{{ tag.slug }}</span></a>
-        {% endfor %}<div class="row">
-                <div class="col-2 text-truncate">
-                  {{ post.body | safe }} 
-                </div>
-              </div>
+        {% endfor %}
         <br/><br/>{{ post.body | safe }} 
         <br/><br/>
         <!-- #|safe |make_shorter(220) -->

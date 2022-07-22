@@ -7,6 +7,7 @@ class Configuration(object):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:Drygoker1234#@localhost/nataliblog'
+    # os.environ.get('DATABASE_URL', '').replace('postgres://', 'postgresql://') or 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace('postgres://', 'postgresql://') or 'mysql+mysqlconnector://root:Drygoker1234#@localhost/nataliblog'
     SECRET_KEY = 'bueatifull smart screen'
 
