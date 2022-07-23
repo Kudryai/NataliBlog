@@ -11,12 +11,14 @@ from flask_security import current_user
 
 from flask import redirect, url_for, request
 from flask_ckeditor import CKEditor
+from whitenoise import WhiteNoise
 
 
 app = Flask(__name__)
 ckeditor = CKEditor(app)
 app.config.from_object(Configuration)
 app.config['CKEDITOR_FILE_UPLOADER'] = 'upload' 
+app.wsgi_app = WhiteNoise(app.wsgi_app, root="static/")
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
