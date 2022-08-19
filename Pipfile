@@ -55,6 +55,7 @@ psycopg2-binary = "*"
 whitenoise = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.8"
