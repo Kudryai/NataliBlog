@@ -1,5 +1,4 @@
 from app import app
-import view
 from app import db
 from posts.blueprint import posts
 
