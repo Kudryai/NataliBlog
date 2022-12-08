@@ -6,17 +6,23 @@
 
 
 {% block content_title %}
-    {{ post.title }}
+<h1>{{ post.title }}</h1>
 {% endblock %}
 
 {% block content %}
-    <div class='tags'>
-        {% for tag in tags %}
-        <a href ="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge text-bg-success">{{ tag.name }}</span></a>
-        {% endfor %}
-    </div>
+<div class='body_body'>
+    <div class='p-3 mb-3 bg-body rounded' >
+        <div class='tags'>
+            {% for tag in tags %}
+            <a href ="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge text-bg-success">{{ tag.name }}</span></a>
+            {% endfor %}
+        </div>
 
-    <div class="main_content">
-    {{ post.body | safe }}
+        {{ post.body | safe }}
+    {% if current_user.has_role('admin') %}
+        <a class="nav-link link text-black display-4" href="/blog/{{ post.slug }}/edit">
+            Редактировать</a>
     </div>
+</div>
+{% endif %}
 {% endblock %}

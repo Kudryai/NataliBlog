@@ -7,11 +7,11 @@ Create new post
 
 
 {% block content_title %}
-New post
+<h1>Новый пост</h1>
 {% endblock %}
 
 {% block content_index %}
-
+<div class='body_body'>
 <div class = "shadow p-3 mb-5 bg-body rounded">
     <form action="{{ url_for('posts.create_post')}}" method="POST">
 
@@ -23,6 +23,7 @@ New post
         {% endfor %}
         <button type="submit" class="btn btn-primary">Создать</button>
     </form>
+</div>
 </div>
     {{ ckeditor.load() }}
     {{ ckeditor.config(name='body') }}

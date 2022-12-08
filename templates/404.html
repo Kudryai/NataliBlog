@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}
-Page not found (404)
+Такой страницы не существует
 {% endblock %}
 
 {% block content_title %}
-Page not found (404)
+<h1>Такой страницы не существует</h1>
 {% endblock %}
 
 {% block content %}
-
+<img src="{{ url_for('static', filename ='image/404.png') }}" class="transparent25">
 
 {% endblock %}
