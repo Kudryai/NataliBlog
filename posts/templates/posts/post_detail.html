@@ -11,13 +11,13 @@
 
 {% block content %}
 <div class='body_body'>
-    <div class='p-3 mb-3 bg-body rounded' >
-        <div class='tags'>
-            {% for tag in tags %}
-            <a href ="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge text-bg-success">{{ tag.name }}</span></a>
-            {% endfor %}
-        </div>
+    <div class='tags'>
+        {% for tag in tags %}
+        <a href ="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge bg-secondary">{{ tag.name }}</span></a>
+        {% endfor %}
+    </div>
 
+    <div class='p-3 mb-3 bg-body rounded' >
         {{ post.body | safe }}
     {% if current_user.has_role('admin') %}
         <a class="nav-link link text-black display-4" href="/blog/{{ post.slug }}/edit">

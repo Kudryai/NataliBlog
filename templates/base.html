@@ -68,8 +68,10 @@
                         <a class="nav-link link text-danger display-8" href="/logout" >
                             EXIT</a>
                         {% else %}
-                        <a class="nav-link link text-danger display-4" href="/logout" >
-                            EXIT</a>
+                        <a class="nav-link link text-black display-8" href="/profile">
+                            Профиль</a>
+                        <a class="nav-link link text-danger display-8" href="/logout" >
+                            Выход</a>
                         {% endif %}
                     {% elif current_user.is_anonymous %}
                         <a class="nav-link link text-black display-8" href="/login">
