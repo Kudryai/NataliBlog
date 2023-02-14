@@ -8,4 +8,4 @@ app.register_blueprint(posts, url_prefix="/blog")
 app.register_blueprint(profile, url_prefix="/profile")
 
 if __name__ == "__main__":
-    app.run()
+    app.run()  # (host="0.0.0.0", port=5001)
