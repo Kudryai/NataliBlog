@@ -2,15 +2,15 @@ version: '3.8'
 services:
   web:
       build: ./
-      command: flask db upgrade head 
-      command: gunicorn --bind 0.0.0.0:5001 main:app
+      container_name: web
+      command: python main.py
+      #gunicorn --bind 0.0.0.0:8000 main:app
       volumes:
         - ./:/usr/src/app/
-        - static_volume:/home/app/web/project/static
       ports:
-        - 5001:5001
+        - 8000:8000
       expose:
-        - 5001
+        - 8000
       env_file:
         - ./.env
 
@@ -24,13 +24,15 @@ services:
         - POSTGRES_DB=vsemeng
 
   nginx:
-      build: ./services/nginx
+      image: nginx:1.23-alpine
       ports:
-        - 1337:80
+        - 80:80
+      expose:
+        - 8000
       depends_on:
         - web
       volumes:
-        - static_volume:/home/app/web/project/static
+        - ./static:/usr/src/app/static
+        - ./services/nginx:/etc/nginx/conf.d
 volumes:
       postgres_data:
-      static_volume:
