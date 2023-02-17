@@ -3,14 +3,15 @@ services:
   web:
       build: ./
       container_name: web
-      command: python main.py
-      #gunicorn --bind 0.0.0.0:8000 main:app
+      command: gunicorn --bind 0.0.0.0:8000 main:app && flask db upgrade head
       volumes:
         - ./:/usr/src/app/
       ports:
         - 8000:8000
       expose:
         - 8000
+      depends_on:
+        - db
       env_file:
         - ./.env
 
@@ -43,5 +44,7 @@ services:
     volumes:
       - ./certbot/www/:/var/www/certbot/:rw
       - ./certbot/conf/:/etc/letsencrypt/:rw
+    depends_on:
+      - nginx
 volumes:
       postgres_data:
