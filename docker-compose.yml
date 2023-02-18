@@ -3,7 +3,7 @@ services:
   web:
       build: ./
       container_name: web
-      command: gunicorn --bind 0.0.0.0:8000 main:app
+      command: sh -c "gunicorn --bind 0.0.0.0:8000 main:app && flask db upgrade"
       restart: always
       volumes:
         - ./:/usr/src/app/
