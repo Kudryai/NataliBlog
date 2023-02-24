@@ -27,6 +27,7 @@ pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
+services/nginx/vsemeng.conf.txt
 *.egg
 MANIFEST
 docker-compose_prod.yml
