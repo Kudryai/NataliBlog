@@ -3,8 +3,8 @@ import os
 from flask import render_template, request, send_from_directory, url_for
 from flask_ckeditor import upload_fail, upload_success
 
-from app import app
-from models import Post
+from app import app, current_user
+from models import Lessons, Post, User
 
 
 @app.route("/")
@@ -25,8 +25,8 @@ def index():
         return render_template("posts/index.html", posts=posts, pages=pages)
     else:
         posts = Post.query.order_by(Post.created.desc())
-    name = "Алексей"
-    return render_template("index.html", n=name)
+    cnt_less = Lessons.query.all()
+    return render_template("index.html", cnt=len(cnt_less))
 
 
 @app.route("/contact")

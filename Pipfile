@@ -18,6 +18,7 @@ sqlalchemy = "==1.4.46"
 flask-sqlalchemy = "*"
 bcrypt = "*"
 gunicorn = "==20.0.4"
+bleach = "*"
 
 [dev-packages]
 

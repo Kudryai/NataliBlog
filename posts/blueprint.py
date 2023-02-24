@@ -4,7 +4,7 @@ from flask import Blueprint, redirect, render_template, request, url_for
 from flask_security import login_required, roles_required
 
 from app import db
-from models import Post, Tag
+from models import Lessons, Post, Tag
 
 from .forms import PostForm
 
@@ -53,6 +53,7 @@ def index():
     q = request.args.get("q")
     page = request.args.get("page")
     tags = Tag.query.all()
+    message_cnt = Lessons.query.all().count()
     if page and page.isdigit():
         page = int(page)
     else:
@@ -65,7 +66,9 @@ def index():
 
     pages = posts.paginate(page=page, per_page=5)
 
-    return render_template("posts/index.html", posts=posts, pages=pages, tags=tags)
+    return render_template(
+        "posts/index.html", posts=posts, pages=pages, tags=tags, message_cnt=message_cnt
+    )
 
 
 @posts.route("/<slug>")

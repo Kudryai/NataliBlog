@@ -104,7 +104,19 @@
     letter-spacing: 0;
     margin-bottom: 0;
     padding-left: 1.25rem;
-    padding-right: 1.25rem; }
+    padding-right: 1.25rem;
+    margin: 4px -3px; }
+  .nav-dropdown .btn2 {
+    background: #eddfcb;
+    border: none;
+    color: #1a1a1aa1;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: -5px 23px;
+    border-radius: 6px; }
   .nav-dropdown .dropdown-menu {
     border-radius: 0;
     border: 0;
