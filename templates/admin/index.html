@@ -1,0 +1,29 @@
+{% extends 'admin/master.html' %}
+
+
+{% block body %}
+<h1>Список будующих уроков:</h1>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Название урока</th>
+        <th scope="col">Время урока</th>
+      </tr>
+    </thead>
+    {% for les in usr %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ les[0].id }}</th>
+            <td>{{ les[1].first_name }}</td>
+            <td>{{ les[1].last_name }}</td>
+            <td><b>{{ les[0].name }}</b></td>
+            <td>{{ les[0].date_lessons }}</td>
+        </tr>
+        </tbody>
+    {% endfor %}
+  </table>
+{% endblock %}

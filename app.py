@@ -1,5 +1,7 @@
+import datetime
+
 from flask import Flask, redirect, render_template_string, request, url_for
-from flask_admin import Admin, AdminIndexView
+from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_ckeditor import CKEditor
 from flask_mailman import Mail
@@ -49,7 +51,20 @@ class AdminView(AdminMixin, ModelView):
 
 
 class HomeAdminView(AdminMixin, AdminIndexView):
-    pass
+    @expose("/")
+    def index(self):
+        lst_lessons = Lessons.query.filter(Lessons.date_lessons >= datetime.today())
+        user_name = (
+            db.session.query(Lessons, User, user_lessons_m2m)
+            .filter(
+                User.id == user_lessons_m2m.c.user_id,
+                Lessons.id == user_lessons_m2m.c.lessons_id,
+            )
+            .filter(Lessons.date_lessons >= datetime.today())
+            .all()
+        )
+        print(user_name)
+        return self.render("admin/index.html", lst_lessons=lst_lessons, usr=user_name)
 
 
 class LessonAdminView(AdminMixin, BaseModelView):
@@ -80,6 +95,7 @@ admin.add_view(PostAdminView(Post, db.session))
 admin.add_view(TagAdminView(Tag, db.session))
 admin.add_view(UserAdminView(User, db.session))
 admin.add_view(LessonAdminView(Lessons, db.session))
+
 # Flask-Sec ###
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)

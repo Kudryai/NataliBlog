@@ -28,6 +28,7 @@ def index():
         current_user=current_user,
         posts_limit=posts_limit5,
         lessons=lessons,
+        cnt=len(lessons),
     )
 
 

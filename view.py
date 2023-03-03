@@ -4,7 +4,7 @@ from flask import render_template, request, send_from_directory, url_for
 from flask_ckeditor import upload_fail, upload_success
 
 from app import app, current_user
-from models import Lessons, Post, User
+from models import Post
 
 
 @app.route("/")
@@ -25,13 +25,16 @@ def index():
         return render_template("posts/index.html", posts=posts, pages=pages)
     else:
         posts = Post.query.order_by(Post.created.desc())
-    cnt_less = Lessons.query.all()
-    return render_template("index.html", cnt=len(cnt_less))
+    if "AnonymousUser" in str(current_user):
+        return render_template("index.html")
+    return render_template("index.html", cnt=len(current_user.lessons))
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    if "AnonymousUser" in str(current_user):
+        return render_template("contact.html")
+    return render_template("contact.html", cnt=len(current_user.lessons))
 
 
 @app.errorhandler(404)
