@@ -70,7 +70,6 @@ def index():
             posts=posts,
             pages=pages,
             tags=tags,
-            cnt=len(current_user.lessons),
         )
     else:
         return render_template(
@@ -78,6 +77,7 @@ def index():
             posts=posts,
             pages=pages,
             tags=tags,
+            cnt=len(current_user.lessons),
         )
 
 
