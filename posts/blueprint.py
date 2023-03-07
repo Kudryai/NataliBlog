@@ -64,14 +64,21 @@ def index():
         posts = Post.query.order_by(Post.created.desc())
 
     pages = posts.paginate(page=page, per_page=5)
-
-    return render_template(
-        "posts/index.html",
-        posts=posts,
-        pages=pages,
-        tags=tags,
-        cnt=len(current_user.lessons),
-    )
+    if "AnonymousUser" in str(current_user):
+        return render_template(
+            "posts/index.html",
+            posts=posts,
+            pages=pages,
+            tags=tags,
+            cnt=len(current_user.lessons),
+        )
+    else:
+        return render_template(
+            "posts/index.html",
+            posts=posts,
+            pages=pages,
+            tags=tags,
+        )
 
 
 @posts.route("/<slug>")
